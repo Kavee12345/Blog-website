@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'card.css' %}">
+<link
+   rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+   integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+   crossorigin="anonymous"
+  />
+<br>
+<br>
+<br>
+<div style="z-index: 1000;" class="panel-body form-inline">
+  <form method='GET'>
+    <input type='text' name='q' placeholder="Type here to search" style="margin: auto; margin-left: 18%; width:50%" value='{{ request.GET.q }}'>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Search
+      <i class="material-icons right">search</i>
+    </button>
+
+  </form>
+  <br>
+  <br>
+  <br>
+  {% for i in blog %}
+  <div class="container">
+   <img
+      src="{{i.thumbnail.url}}"
+   />
+   <div class="container__text">
+      <h1 style="font-size: 37px; color: black;">{{i.title}}</h1>
+    <p style="color: black; font-size: 19px;">
+        <strong style="font-weight: bolder;">Details:</strong>
+        {{i.tags}} 
+    </p>
+    <div class="container__text__timing">
+        <u>
+        <h5 style="color: black;">Author: <strong>{{i.author}}</strong></h5> 
+        </u>
+    </div>
+      <a href="/blogs/{{i.slug}}">
+    <button class="btn">view content <i class="fa fa-arrow-right"></i></button>
+      </a>
+   </div>
+  </div>
+  <br>
+  <br>
+  <br>
+    {% endfor %}{% endblock %}

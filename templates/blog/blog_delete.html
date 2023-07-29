@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block home %}
+<div class="container py-5" style="font-size: 20px; margin-top: 100px; margin-right: auto; margin-left: auto;">
+<form method="post">{% csrf_token %}
+  <p>Are you sure you want to delete "{{ object }}"?</p>
+  <input type="submit" class="btn" style="z-index: 1000000;" value="Confirm">
+</form>
+</div>
+{% endblock %}
